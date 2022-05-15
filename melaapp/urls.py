@@ -1,0 +1,35 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'),
+    path('reg/', views.reg, name='reg'),
+    path('signup/', views.signup, name='signup'),
+    path('signup1/', views.signup1, name='signup1'),
+    path('login/', views.login, name='login'),
+    path('adhome/', views.adhome, name='adhome'),
+    path('userview/', views.userview, name='userview'),
+    path('view_seller/',views.view_seller, name='view_seller'),
+    path('view_cus/',views.view_cus, name='view_cus'),
+    path('sehome/',views.sehome, name='sehome'),
+    path('add_category/', views.add_category, name='add_category'),
+    path('view_category/', views.view_category, name='view_category'),
+    path('delete_cat/<int:id>/', views.delete_cat, name='delete_cat'),
+    path('edit_cat/<int:id>/', views.edit_cat, name='edit_cat'),
+    path('add_product/', views.add_product, name='add_product'),
+    path('view_product/', views.view_product, name='view_product'),
+    path('edit_product/<int:id>/', views.edit_product, name='edit_product'),
+    path('delete_product/<int:id>/', views.delete_product, name='delete_product'),
+    path('cuhome/', views.cuhome, name='cuhome'),
+    path('view_products/', views.view_products, name='view_products'),
+    path('view_categoryy/', views.view_categoryy, name='view_categoryy'),
+    path('product_detail/<int:id>/', views.product_detail, name='product_detail'),
+    path('order_request/<int:id>/', views.order_request, name='order_request'),
+    path('cus_request_status/', views.cus_request_status, name='cus_request_status'),
+    path('approve_cus/<int:id>/', views.approve_cus, name='approve_cus'),
+    path('reject_cus/<int:id>/', views.reject_cus, name='reject_cus'),
+    path('cus_request_order/', views.cus_request_order, name='cus_request_order'),
+    path('s_feedback/',views.s_feedback, name='s_feedback'),
+    path('view_cfeedback/', views.view_cfeedback, name='view_cfeedback'),
+
+]

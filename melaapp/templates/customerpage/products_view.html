@@ -1,0 +1,45 @@
+{% extends 'customerpage/base.html' %}
+{% block content %}
+
+<div class="container-fluid mt-3">
+	<div class="row">
+
+		<div class="col-lg-3 mx-auto">
+			<div class="list-group">
+<form method="get" style="float:right" class="form-inline ">
+    <div class="md-form my-0">
+        {{serviceFilter.form }}
+        <button class="btn btn-primary" type="submit" style="background-color:orange;">Search</button>
+    </div>
+</form><br>
+
+				<a href="{% url 'view_products' %}" class="list-group-item list-group-item-action btn btn-outline-success">All Products</a>
+
+
+			</div>
+
+		</div>
+		<!-- all products -->
+		<div id='products' class="col-lg-9 mx-auto">
+			<div class="row mx-auto">
+
+				{% for product in products %}
+				<div class="card mx-auto mb-3" id={{product.id}} style="width: 18rem;">
+					<a href="{% url 'product_detail' product.id %}"><img class="card-img-top" src="{{product.pic.url}}" alt="Card image cap"></a>
+					<div class="card-body">
+						<p class="card-title">{{product.name}}</p>
+						<p class="card-title">{{product.Specification}}</p>
+						<p class="card-text"><b>{{product.price}}</b></p>
+					</div>
+					<div class="card-footer p-0 no-gutters">
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}

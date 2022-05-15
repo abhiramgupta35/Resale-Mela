@@ -1,0 +1,50 @@
+{% extends 'adminpage/base.html'%}
+{% block content %}
+
+<div class="table-agile-info">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <b style="color:red;">REGISTERED CUSTOMERS
+        </div>
+        <div>
+            <table class="table  table-bordered" style="background-color:black;">
+
+                <thead>
+                <tr>
+                    <th>SI No</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone No</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for dept in depts %}
+                <tr>
+
+                    <td>{{forloop.counter}}</td>
+                    <td>{{dept.name}}</td>
+                    <td>{{dept.address}}</td>
+                    <td>{{dept.phone}}</td>
+                    <td>{{dept.email}}</td>
+
+                </tr>
+
+                {% empty %}
+                <tr>
+                    <td colspan="6">
+                        <div class="alert alert-primary" role="alert">
+                            <h4>No Results Found</h4>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

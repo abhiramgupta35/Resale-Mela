@@ -1,0 +1,39 @@
+{% extends 'sepage/base.html'%}
+{% load crispy_forms_filters %}
+{% block content %}
+
+
+<div class="col-lg-8">
+    <section class="panel">
+        <header class="panel-heading">
+            <b>Add Category</b>
+        </header>
+        <div class="panel-body">
+            <div class="position-center">
+                <form method="post" enctype="multipart/form-data">{% csrf_token %}
+                    <div class="form-group">
+                        {{a_form|crispy}}
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="item form-group">
+                        <div class="col-md-6 col-sm-6 offset-md-3">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+
+                </form>
+                <div>
+
+</div>
+            </div>
+        </div>
+         {% for message in messages %}
+						<div class="alert alert-danger" role="alert">
+						  {{message}}
+						</div>
+					{% endfor %}
+    </section>
+</div>
+
+
+{% endblock %}

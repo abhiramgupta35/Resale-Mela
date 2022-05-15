@@ -1,0 +1,66 @@
+{% extends 'customerpage/base.html' %}
+{% block content %}
+{% load static %}
+{% load crispy_forms_filters %}
+
+
+        <div class="content mt-7"style="background-color:black; " >
+            <div class="animated fadeIn" >
+
+
+
+
+<!--to use one field in form - form.name|as_crispy_forms-->
+
+                                            <div class="col-lg-6" style="background-color:black;color:white; font-size:20px ;">
+                                                <div class="card" style="background-color:black;" >
+                                                    <div class="card-header" style="background-color:black;">
+                                                        <strong><i></i></strong>  <strong><i>PRODUCT</i></strong><br>
+
+                                                    </div>
+                                                    <div class="card-body card-block" style="background-color:black;">
+                                                         <form method="post" enctype="multipart/form-data">{% csrf_token %}<img style="background-size:cover;" alt="avatar" src="{{key.pic.url}}" width="200px;">
+
+<div>
+	Product Name:<input readonly type="text" class="form-control" name="product"  value="{{key.product_name}}">
+</div><br>
+                                                             <div>
+	Price:<input readonly type="text" class="form-control" name="product"  value="{{key.price}}">
+</div>
+<br> 
+                                                              <div>
+	Your Card Number:<input  type="text" class="form-control" name="card_number" maxlength="16">
+</div><br>
+                                                             <div>
+	CVV:<input  type="text" class="form-control" name="cvv" maxlength="3">
+</div><br>
+{{form.errors}}
+					<div class="container-login100-form-btn p-t-25">
+						<button class="login100-form-btn" style="color:orange; background-color:black;">
+							<b><i>PLACE ORDER
+						</button>
+					</div>
+															                                        </div>
+     {% for message in messages %}
+
+                    <div class="alert alert-success">
+                        <a class="close" href="#" data-dismiss="alert">×</a>
+
+                        {{ message }}
+
+                    </div>
+            {% endfor %}
+                                                </div>
+
+                                            </div>
+
+
+
+                                                </div>
+
+
+                                                    </div>
+
+                                                </div>
+{% endblock %}
+

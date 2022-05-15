@@ -1,0 +1,72 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+
+	</style>
+	<meta charset="utf-8">
+	<title>Form-v9 by Colorlib</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login1/css/nunito-font.css' %}">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static 'login1/css/style.css' %}"/>
+</head>
+<body class="form-v9">
+	<div class="page-content" id="w">
+		<div class="form-v9-content" style="background-image: url('images/form-v9.jpg')">
+			<form class="form-detail"  method="post">	<div class="form-row-last">
+					<a href="{% url 'index' %}">Home</a>
+				</div>
+				{% csrf_token %}
+				{% for message in messages %}
+				 <div style="color:red;">
+					 {{message}}
+				 </div>
+				{% endfor %}
+				<h2>SIGN UP</h2>
+				<div >
+<!--{{form|crispy}}-->
+<!--{{r_form|crispy}}-->
+<div class="form-row">
+					{% render_field form.username placeholder="username" type="text" %}
+</div><br>
+					<div class="form-row">
+					{% render_field form.password1 placeholder="password" type="text" %}
+</div><br>
+
+					<div class="form-row">
+					{% render_field form.password2 placeholder="confirm password" type="text" %}
+</div><br>
+
+					<div class="form-row">
+					{% render_field r_form.name placeholder="name" type="text" %}
+</div><br>
+					<div class="form-row">
+					{% render_field r_form.phone placeholder="phone" type="text" %}
+</div><br>
+					<div class="form-row">
+					{% render_field r_form.address placeholder="address" type="text" %}
+</div><br>
+					<div class="form-row">
+					{% render_field r_form.email placeholder="email" type="text" %}
+</div><br>
+
+
+
+
+
+				<div class="form-row-last">
+					<input type="submit" name="register" class="register" value="submit">
+				</div>
+
+			</form>
+		</div>
+	</div>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

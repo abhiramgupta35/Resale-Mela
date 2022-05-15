@@ -1,0 +1,51 @@
+{% extends 'customerpage/base.html' %}
+{% block content %}
+
+<div class="container">
+   <div class="border rounded p-4 m-4">
+        <p class="display-4 pl-4 ml-4">Your Orders</p>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sno.</th>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Order Status</th>
+                    <th>Payment Status</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for order in orders %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td><img style="height: 80px;" class="rounded-circle" src="{{order.pro.pic.url}}" alt=""></td>
+                    <td>{{order.pro.product_name}}</td>
+                    <td>{{order.pro.price}}</td>
+                    {% if order.order_status %}
+                    <td><small class="badge badge-success">Confirmed</small></td>
+                    {%else%}
+                    <td><small class="badge badge-warning">Pending</small></td>
+                    {% endif %}
+                    {% if order.payment_status %}
+                    <td><small class="badge badge-success">Completed</small></td>
+                    {%else%}
+                    <td><small class="badge badge-warning">Pending</small></td>
+                    {% endif %}
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+   </div>
+</div>
+
+
+
+
+{% endblock %}

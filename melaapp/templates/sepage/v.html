@@ -1,0 +1,57 @@
+{% extends 'sepage/base.html'%}
+{% block content %}
+
+<div class="table-agile-info">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <b style="color:red;">View Products
+        </div>
+        <div>
+            <table class="table  table-bordered" style="background-color:black;">
+
+                <thead>
+                <tr>
+                    <th>SI No</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Specification</th>
+                    <th>Purchased Year</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                {% for schedule in schedules %}
+                <tr>
+
+                    <td>{{forloop.counter}}</td>
+                    <td>{{schedule.product_name}}</td>
+                    <td>{{schedule.category_name}}</td>
+                    <td>{{schedule.price}}</td>
+                    <td>{{schedule.Specification}}</td>
+                    <td>{{schedule.purchased_year}}</td>
+                    <td><img src="{{schedule.pic.url}}"></td>
+                    <td><a href="{% url 'delete_product' id=schedule.id %}"><button style="color:white; background-color:orange;">DELETE</button></a></td>
+                    <td><a href="{% url 'edit_product' id=schedule.id %}"><button style="color:white; background-color:orange;">UPDATE</button></a></td>
+
+                </tr>
+
+                {% empty %}
+                <tr>
+                    <td colspan="6">
+                        <div class="alert alert-primary" role="alert">
+                            <h4>No Results Found</h4>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

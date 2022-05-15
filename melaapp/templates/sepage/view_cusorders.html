@@ -1,0 +1,62 @@
+{% extends 'sepage/base.html'%}
+{% block content %}
+
+<div class="table-agile-info">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <b style="color:red;">View Customer Orders
+        </div>
+        <div>
+            <table class="table  table-bordered" style="background-color:black;">
+
+                <thead>
+                  <tr>
+
+                                             <th> SI No </th>
+                                            <th>Customer Name</th>
+                                            <th>Mobile Number</th>
+                                            <th>Location</th>
+                                            <th> Product Name </th>
+                                            <th> Category </th>
+                                            <th>Amount</th>
+                                            <th>Payment Status</th>
+                                            <th style = "color:yellow;">Order Status</th>
+
+                                        </tr>
+                </thead>
+               <tbody>
+ {% for product in products %}
+        <tr>
+            <td scope="row">{{forloop.counter}}</td>
+
+            <td>{{product.customer.name}}</td>
+             <td>{{product.customer.phone}}</td>
+             <td>{{product.customer.address}}</td>
+            <td>{{product.pro.product_name}}</td>
+            <td>{{product.pro.category_name}}</td>
+            <td>{{product.pro.price}}</td>
+ {% if product.payment_status == 1 %}
+                    <td><small class="badge badge-success">Completed</small></td>
+                    {%else%}
+                    <td><small class="badge badge-warning">Pending</small></td>
+                    {% endif %}
+<td>{% if product.order_status == 0 %}
+
+                 <a href="{% url 'approve_cus' product.id %}"><b style="color:yellow;">Confirm</b></a>
+                <a href="{% url 'reject_cus' product.id %}"><b style="color:yellow;">Reject</b></a>
+                {% elif product.order_status == 1 %}
+                <p>Order Confirmed</p>
+                {% else %}
+                <p>Order Rejected</p>
+                {% endif %}
+            </td>
+        </tr>
+ {% endfor %}
+                                    </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
